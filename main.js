@@ -1,5 +1,6 @@
 var stage, renderer, player;
 var asteroids = [];
+var pewpew = []
 var asteroid_text = PIXI.Texture.fromImage("img/asteroid_1.png");
 init();
 
@@ -15,33 +16,12 @@ function init(){
 	document.body.appendChild(renderer.view);
 
 	//Player
-	var texture = PIXI.Texture.fromImage("img/ship.png");
-	player = new PIXI.Sprite(texture);
-	player.scale = new PIXI.Point(0.7,0.7);
+	player = new Player();
 	stage.addChild(player);
 	player.position.x = renderer.width/2;
 	player.position.y = renderer.height/2;
-	player.anchor.x = 0.5;
-	player.anchor.y = 0.5;
   player.speed = 0.1;
-  player.acceleration = {
-    x: 0.0,
-    y: 0.0
-  }
 
-	player.forward = function(){
-		var multiplier = {
-			x: Math.cos(this.rotation),
-			y: Math.sin(this.rotation)
-		}
-
-		this.acceleration.x += this.speed * multiplier.x;
-    if(this.acceleration.x > 10)
-      this.acceleration.x = 10;
-		this.acceleration.y += this.speed * multiplier.y;
-    if(this.acceleration.y > 10)
-      this.acceleration.y = 10;
-	}
 
 	window.addEventListener('keydown', function(event) {
 		switch (event.keyCode) {
