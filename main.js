@@ -9,7 +9,7 @@ function init(){
 	document.body.appendChild(renderer.view);
 
 	//Player
-	var texture = PIXI.Texture.fromImage("img/asteroid_1.png");
+	var texture = PIXI.Texture.fromImage("img/ship.png");
 	player = new PIXI.Sprite(texture);
 	player.anchor.x = 0.5;
 	player.anchor.y = 0.5;
