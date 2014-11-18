@@ -23,15 +23,24 @@ function init(){
 	player.position.y = renderer.height/2;
 	player.anchor.x = 0.5;
 	player.anchor.y = 0.5;
-	player.speed = 1;
+  player.speed = 0.1;
+  player.acceleration = {
+    x: 0.0,
+    y: 0.0
+  }
+
 	player.forward = function(){
 		var multiplier = {
 			x: Math.cos(this.rotation),
 			y: Math.sin(this.rotation)
 		}
 
-		this.position.x += this.speed * multiplier.x;
-		this.position.y += this.speed * multiplier.y;
+		this.acceleration.x += this.speed * multiplier.x;
+    if(this.acceleration.x > 10)
+      this.acceleration.x = 10;
+		this.acceleration.y += this.speed * multiplier.y;
+    if(this.acceleration.y > 10)
+      this.acceleration.y = 10;
 	}
 
 	window.addEventListener('keydown', function(event) {
@@ -90,6 +99,10 @@ function animate() {
 		player.rotation += 0.1;
 	if(key.left)
 		player.rotation -= 0.1;
+
+
+  player.position.x += player.acceleration.x;
+  player.position.y += player.acceleration.y;
 
 	screenWrap(player);
 
