@@ -17,11 +17,16 @@ function Player() {
     }
 
     this.acceleration.x += this.speed * multiplier.x;
-      if(this.acceleration.x > 10)
-        this.acceleration.x = 10;
+    if(this.acceleration.x > 7)
+      this.acceleration.x = 7;
+    else if(this.acceleration.x < -7)
+      this.acceleration.x = -7;
+
     this.acceleration.y += this.speed * multiplier.y;
-    if(this.acceleration.y > 10)
-      this.acceleration.y = 10;
+    if(this.acceleration.y > 7)
+      this.acceleration.y = 7;
+    else if(this.acceleration.y < -7)
+      this.acceleration.y = -7;
   }
 
 }
